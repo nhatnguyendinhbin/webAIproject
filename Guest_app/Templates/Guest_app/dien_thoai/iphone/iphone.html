@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- detail products -->
+    {% comment %} {% for item in list_iphone %} {% endcomment %}
+    <div class="grid-sizer col-lg-3 col-md-4 col-sm-6"></div>
+    <div class="col-lg-3 col-md-4 col-sm-6 apple grid-item green">                       
+      <div class="products__item item_nospace">
+        <div class="product__slider-item">
+            {% comment %} hình ảnh {% endcomment %}
+          <div class="product__image display_flex"><a href="#"><img src="./images/home/pd12.jpg" alt=""></a>
+            <div class="product__bottom">
+               <h3 class="product__bottom-name"><a href="details">IPHONE 15</a></h3>
+               <div class="product__bottom-price">
+                <span><span class="product-special">8.000.000
+                </div>
+              </div>
+              {% comment %} giỏ hàng {% endcomment %}
+              <div class="product__bottom-action">
+                <button class="btn_cart add_to_cart"><i class="fal fa-shopping-bag"></i></button><a class="btn_view" href="#"><i class="fal fa-search"> </i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% comment %} {% endfor %} {% endcomment %}
+{% endblock content %}
+
+
+{% comment %} hiển thị danh sách {% endcomment %}
+        {% comment %} for in item in + tên của biến trong views.py {% endcomment %}
+        {% comment %} {% for item in publishers  %}
+        <tr>
+            <td>{{item.name}}</td>
+            <td>{{item.website}}</td>
+            <td>{{item.email}}</td>
+
+            <!-- <td><button type="button" class="btn btn-success">Edit</button></td>   dùng bootswatch
+            <td><button type="button" class="btn btn-danger">Delete</button></td> -->
+
+            <td> <a href="{% url "edit_publisher" item.id %}" class="btn btn-success">Edit</a></td>
+            <td><a href="{% url "delete_publisher" item.id %}" class="btn btn-danger">Delete</a></td>
+        </tr>
+        {% endfor %} {% endcomment %}

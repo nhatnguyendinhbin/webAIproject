@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- detail products -->
+    {% comment %} {% for item in list_iphone %} {% endcomment %}
+    <div class="product__slider-item">
+            <div class="product__image display_flex">
+            <a href="#"><img src="./images/home/pd12.jpg" alt=""/></a>
+            </div>
+
+        <!-- name product -->
+            <div class="product__bottom">
+            <h3 class="product__bottom-name">
+                <a href="#">XIAOMI</a>
+            </h3>
+            </div>
+
+        <!-- price product -->
+            <div class="product__bottom-price">
+                <span
+                ><span class="product-special"
+                    >8.000.000₫</span
+                ></span>
+            </div>
+
+        <!-- add cart product -->
+            <div class="product__bottom-action">
+                <button class="btn_cart add_to_cart">
+                <i class="fal fa-shopping-bag">Cart</i>
+            </div>
+    </div>
+    {% comment %} {% endfor %} {% endcomment %}
+{% endblock content %}

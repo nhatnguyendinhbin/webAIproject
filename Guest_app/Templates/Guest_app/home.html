@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p>đây là trang home: chứa search product , product, cart </p>
+<section class="product">
+    <div class="container">
+        <div >
+            <div class="title__module-flex">
+                <h2><a href="#">Điện Thoại</a></h2>
+            </div>
+
+            </div>
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a
+                            class="nav-link active"
+                            id="home-tab"
+                            data-toggle="tab"
+                            href="#home"
+                            role="tab"
+                            aria-controls="Điện thoại"
+                            aria-selected="true"
+                            >IPHONE</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a
+                            class="nav-link"
+                            id="profile-tab"
+                            data-toggle="tab"
+                            href="#profile"
+                            role="tab"
+                            aria-controls="Laptop &amp; PC"
+                            aria-selected="false"
+                            >SAMSUNG</a>
+                    </li>
+
+                    <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        id="contact-tab"
+                        data-toggle="tab"
+                        href="#contact"
+                        role="tab"
+                        aria-controls="Laptop &amp; PC"
+                        aria-selected="false"
+                        >XIAOMI</a
+                    >
+                    </li>
+                </ul>
+            </div>
+        </div>
+</section>
+{% endblock content %}
