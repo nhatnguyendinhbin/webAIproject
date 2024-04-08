@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container px-1 px-lg-5 mt-0">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">    
+            {% for item in iphone  %}
+            <div class="col mb-1">
+                <div class="card h-100">
+                    <!-- Product image-->
+                    <img class="card-img-top" alt=""/>
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                    <!-- Product name-->
+                        <div class="text-center">                                 
+                            <h3 class="fw-bolder" style="color: black;">{{item.Product_Name}}</h3>
+                        </div>
+                        <div class="text-center">                                 
+                            <h3 class="fw-bolder" style="color: black;">{{item.Product_ID}}</h3>
+                        </div>
+                    <!-- price product -->
+                        <div class="product__bottom-price">
+                            <span class="product-special" style="color: red;">Giá: {{item.Unit_Price}}</span>
+                        </div>
+                    <!-- price config -->
+                        <div class="product__bottom-price">
+                            <span class="product-special">
+                                <i class="fas fa-microchip"></i>
+                                    {{item.Configuration}}
+                            </span>
+                        </div>
+                    </div> 
+                    <!-- add to cart -->
+                    <div class="card-footer pt-0 border-top-0 bg-transparent">
+                        <div class="text-center">
+                            <a class="btn btn-outline-dark mt-auto" href="{% url 'add_to_cart' %}">Thêm</a>
+                            <a class="btn btn-outline-dark mt-auto" href="#">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}   
+        </div>
+{% endblock content %}

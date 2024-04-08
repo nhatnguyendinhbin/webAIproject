@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+đây là trang detail phone
+    <br>
+    <ul>
+        <li>
+            <img src="#" alt="" width="250px"/>
+        </li>
+        <li>
+            <h3><span style="color: red;">tên điện thoại :</span> title</h3>
+        </li>
+        <li>
+            <h3><span style="color: red;">giá :</span> giá</h3>
+        </li>
+    </ul>   
+
+    {% comment %} {% for item in review_books  %}
+    <ul>          
+        <hr>
+        <h5>THE REVIEWS  : </h5>
+        <p><span style="color: blue;">Content :</span> {{item.content}}</p>
+        <p><span style="color: blue;">Rating  :</span> {{item.rating}} </p>
+        <p><span style="color: blue;">Date created :</span> {{item.date_created}} </p>
+        <p><span style="color: blue;">Book :</span> {{item.book}}   </p>
+    </ul>
+    {% endfor %} {% endcomment %}
+{% endblock content %}
