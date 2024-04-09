@@ -36,6 +36,7 @@
         <!-- Page level custom scripts -->
         <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
         <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
+
 </head>
 
 <body id="page-top">
@@ -43,26 +44,22 @@
     <div id="wrapper">
         <!-- Sidebar : chứa các sản phẩm-->
         {% include "sidebar.html" %}
-        <!-- End of Sidebar -->
 
-        <!-- Content Wrapper -->
+    <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-
             <!-- Main Content -->
             <div id="content">
-
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <!-- Topbar Search -->
+                    <!-- Search -->
                     <div class="row">
                         <form action="#" class="row g-3 col-md-12" action="" method="post">
-                            {% comment %} phải có dòng csrf_token trong forms thì django mới nhận được {% endcomment %}
+                            <!-- phải có dòng csrf_token trong forms thì django mới nhận được -->
                             {% csrf_token %} 
                             <div class="col-md-8">
                                 <input type="text" name= "search_value" class="form-control" id="inputSearch" placeholder="Enter search value">
@@ -71,19 +68,19 @@
                                 <button type="submit" class="btn btn-primary mb-3">Search</button>
                             </div>
                         </form>
-                        </div
-
-                    <!-- cart -->
-                    <div class="mini__cart">
-                        <a class="cart_pcs" href="#"><i class="fas fa-shopping-cart"></i></i>&nbsp;
-                            <span class="t__line"
-                            >Giỏ hàng&nbsp;<span>0</span></span>
-                        </a>
-                      </div>
+                    </div>
                 
-                    <!-- Topbar Navbar -->
+                    <!-- add cart -->
+                    <div class="mini__cart">
+                        <a class="cart_pcs" href="#">
+                            <i class="fas fa-shopping-cart"></i></i>&nbsp;
+                            <span class="t__line">Giỏ hàng &nbsp;
+                            <span>0</span></span>
+                        </a>
+                    </div>
+                
+                    <!--  Navbar -->
                     <ul class="navbar-nav ml-auto">
-
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
@@ -107,22 +104,16 @@
                                 </form>
                             </div>
                         </li>
-
-
                         <div class="topbar-divider d-none d-sm-block"></div>
-
-                        <!-- Nav Item - User Information -->
+                <!-- log in & log out -->
                         <li class="nav-item dropdown no-arrow">
-                            <!-- log in & log out -->
                             <div class="header-main-login">
                                 <i class="fas fa-user-friends"></i>
-                                <a href='/singup' title='Đăng ký'>Đăng nhập</a>&nbsp; /
+                                <a href='/singup' title='Đăng ký'>Đăng nhập</a>&nbsp; |
                                 &nbsp;<a href='/singin' title='Đăng nhập'>Đăng xuất </a>
                             </div>
                         </li>
-
                     </ul>
-
                 </nav>
                 <!-- End of Topbar -->
 
@@ -133,12 +124,31 @@
                 {% endblock content %}       
             </div>
         <!-- end main -->
+        <!-- Logout Model-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <!-- thêm đường dẫn logout-->       
+                        <a class="btn btn-primary" href="#">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Footer -->
             <footer class="sticky-footer bg-dark">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; My Website 2024</span>
+                        <p class="m-0 text-center text-white">Copyright &copy; My Website 2024</p>
                     </div>
                 </div>
             </footer>
@@ -154,26 +164,5 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-<!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    
-                {% comment %} thêm đường dẫn logout {% endcomment %}
-                    <a class="btn btn-primary" href="#">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
 </body>
 </html>

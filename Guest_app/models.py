@@ -22,7 +22,7 @@ class Product(models.Model):
     Product_Name = models.CharField(max_length = 150, default= "")
     Configuration = models.CharField(max_length = 150, default= "")
     Description= models.CharField(max_length = 500, default= "")
-    Quantyti_In_Store = models.CharField(max_length = 150, default= "")
+    Quantity_In_Store = models.CharField(max_length = 150, default= "")
     Unit_Price = models.CharField(max_length = 150, default= "")
     Warranty = models.CharField(max_length = 150, default= "")
     Other = models.CharField(max_length = 150, default= "")
@@ -36,8 +36,7 @@ class Product(models.Model):
     
 # Create your models here.
 class Order_Detail(models.Model):
-    Product_Name = models.ForeignKey(Product, on_delete = models.CASCADE)  # khóa ngoài với Product
-    Quantity = models.CharField(max_length = 150, default= "")
+    Quantity = models.ForeignKey(Product, on_delete = models.CASCADE)  # khóa ngoài với Product
     Unit_Price = models.CharField(max_length = 150, default= "")
 
     class Meta:
