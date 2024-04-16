@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>SHOP CART</title>
+        <title>Thế giới công nghệ</title>
         <!-- Required meta tags -->
         <meta charset="utf-8" />
         <meta
@@ -56,16 +56,17 @@
             <nav class="navbar bg-danger">
                 <div class="container-fluid">
                     <a href="{% url 'home' %}">Quay lại</a>
-                    <h1 class="navbar-brand">SHOP BỊP | Giỏ hàng </h1>
+                    <h3 >Thế giới công nghệ | Giỏ hàng </h3>
                     <form class="d-flex " role="search">
                         <input class="form-control me-5" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-success " type="submit">Search</button>
                     </form>
                 <!-- info -->
-                    <a href='/singup' title='Đăng ký'>Thông tin tài khoản</a>
+                    <a href='#' title=''>Thông tin tài khoản</a>
                 </div>
             </nav>
         </div>
+        
         <!-- phần giỏ hàng -->
         <div class="container">
             <div class="row">
@@ -77,68 +78,51 @@
                                 <th>Số lượng</th>
                                 <th class="text-center">Giá</th>
                                 <th class="text-center">Tổng tiền</th>
-                                <th></th>
+                                <th>Xóa khỏi giỏ hàng</th>
                             </tr>
                         </thead>
                         <tbody>
-
+                        <!-- thêm thông tin giỏ hàng -->
+                        {% for item in list_shopping_cart  %}
                             <tr>
                                 <td class="col-sm-8 col-md-6">
-                                <div class="media">
-                                    <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading"><a href="#">#</a></h4>
-                                        <h5 class="media-heading"><a href="#">#</a></h5>
-                                        <span>Cấu hình: </span><span class="text-success"><strong>#</strong></span>
+                                    <div class="media">
+                                        <img class="media-object" src="/media/{{item.Product_ID.Product_Img}}" style="width: 72px; height: 72px;">
+                                        <br>
+                                        <div class="media-body">
+                                            <h5 class="media-heading"><span style="color: red;">{{ item.Product_ID.Product_Name }}</span></h5>
+                                            <h5 class="media-heading">Chip: {{ item.Product_ID.Configuration}}</h5>
+                                            <h5 class="media-heading">Xuất xứ: {{ item.Product_ID.Other}}</h5>
+                                        </div>
                                     </div>
-                                </div></td>
-                                <td class="col-sm-1 col-md-1" style="text-align: center">
-                                <input type="email" class="form-control" id="exampleInputEmail1" value="3">
                                 </td>
-                                <td class="col-sm-1 col-md-1 text-center"><strong>$4.87</strong></td>
-                                <td class="col-sm-1 col-md-1 text-center"><strong>$14.61</strong></td>
+
+                                <td class="col-sm-1 col-md-1 text-center">
+                                    <input type="number" name="quantity" value="{{ item.Quantity }}" class="form-control form-control-lg">
+                                </td>
+
+                                <td class="col-sm-1 col-md-1 text-center">{{ item.Product_ID.Unit_Price}}.vnđ</td>
+                                <td class="col-sm-1 col-md-1 text-center"><span style="color:blue">{{total_price}}.vnđ</span></td>
                                 <td class="col-sm-1 col-md-1">
-                                <button type="button" class="btn btn-danger">
-                                    <span class="glyphicon glyphicon-remove"></span> Xóa
-                                </button></td>
+                                    <button type="button" class="btn btn-danger">
+                                        <span class="glyphicon glyphicon-remove"><a href="{% url 'remove_product' item.Product_ID.Product_ID %}"> Xóa</a></span>
+                                    </button></td>
                             </tr>
                             
                             <tr>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td><h5>Giá</h5></td>
-                                <td class="text-right"><h5><strong>$24.59</strong></h5></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><h5>Phí vận chuyển</h5></td>
-                                <td class="text-right"><h5><strong>$6.94</strong></h5></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><h3>Tổng cộng</h3></td>
-                                <td class="text-right"><h3><strong>$31.53</strong></h3></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                <button type="button" class="btn btn-default">
+                                <td><button type="button" class="btn btn-default">
                                     <span class="glyphicon glyphicon-shopping-cart"></span>
-                                    <a href="{% url 'list_iphone' %}"> Tiếp tục mua sắm</a> 
-                                </button></td>
-                                <td>
-                                <button type="button" class="btn btn-success">
-                                    <a href="{% url 'check_out' %}">Thanh toán</a>
-                                    <span class="glyphicon glyphicon-play"></span>
-                                </button></td>
+                                    <a href="{% url 'list_iphone' %}"> Tiếp tục mua sắm</a> </button></td>
+
+                                <td><button type="button" class="btn btn-success">
+                                    <a href="{% url 'check_out'  %}">Thanh toán</a>
+                                    <span class="glyphicon glyphicon-play"></span></button></td>
                             </tr>
+
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>

@@ -1,5 +1,6 @@
 from django import forms
 from . models import *
+from django.shortcuts import get_object_or_404
 
 # form để checkout
 class CustomerForm(forms.ModelForm):
@@ -18,14 +19,4 @@ class CustomerForm(forms.ModelForm):
 
 
 
-# form để chọn số lượng sản phẩm và cho vào giỏ hàng
-class Order_DetailForm(forms.ModelForm):
-    # chữ Meta nhớ viết hoa chữ M nếu không sẽ sai
-    class Meta:
-        model = Order_Detail
-        fields = ['Quantity', 'Unit_Price']
         
-        widgets = { #để định dạng form đăng nhập thông tin như trong css
-                    'Quantity': forms.TextInput(attrs={'class': 'form-control'}),
-                    'Unit_Price': forms.TextInput(attrs={'class': 'form-control'}),
-                    }

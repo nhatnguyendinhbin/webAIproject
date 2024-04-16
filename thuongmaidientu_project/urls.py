@@ -16,12 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include  # include để thêm đường dẫn của các app
+# thêm dường dẫn của media trong project
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # thêm đường dẫn cho các app 
     path('', include('Guest_app.urls')),  # Đường dẫn cho ứng dụng "guests"
-    # path('Customer/', include('Customer.urls')),  # Đường dẫn cho ứng dụng "customer"
+    path('Customer_app/', include('Customer_app.urls')),  # Đường dẫn cho ứng dụng "customer"
     # path('System/', include('System.urls')),  # Đường dẫn cho ứng dụng "system"
     # path('Seller/', include('Seller.urls')),  # Đường dẫn cho ứng dụng "seller"
 ]
+# thêm dường dẫn của media trong project 
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

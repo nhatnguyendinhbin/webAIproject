@@ -3,33 +3,35 @@
 {% block content %}
     <div class="container px-1 px-lg-5 mt-0">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">    
-            {% for item in iphone  %}
+            {% for ip in iphone  %}
             <div class="col mb-1">
                 <div class="card h-100">
                     <!-- Product image-->
-                    <td><img src="/{{item.Product_Img}}" alt="File cover" height="70"/></td>
+                    <img src="/media/{{ip.Product_Img}}" alt="not_filecover" height="250">
+                    
                     <!-- Product details-->
                     <div class="card-body p-4">
                     <!-- Product name-->
                         <div class="text-center">                                 
-                            <h3 class="fw-bolder" style="color: black;">{{item.Product_Name}}</h3>
+                            <h3 class="fw-bolder" style="color: black;">{{ip.Product_Name}}</h3>
                         </div>
+
                     <!-- price product -->
                         <div class="product__bottom-price">
-                            <span class="product-special" style="color: red;">Giá: {{item.Unit_Price}}</span>
+                            <span class="product-special" style="color: red;">Giá: {{ip.Unit_Price}}.vnđ</span>
                         </div>
                     <!-- price config -->
                         <div class="product__bottom-price">
                             <span class="product-special">
                                 <i class="fas fa-microchip"></i>
-                                    {{item.Configuration}}
+                                    {{ip.Configuration}}
                             </span>
                         </div>
                     </div> 
                     <!-- add to cart -->
                     <div class="card-footer pt-0 border-top-0 bg-transparent">
                         <div class="text-center">
-                            <a class="btn btn-outline-dark mt-auto" href="{% url 'detail_product' item.Product_ID %}">Xem chi tiết</a>
+                            <a class="btn btn-outline-dark mt-auto" href="{% url 'detail_product' ip.Product_ID %}">Chi tiết sản phẩm</a>
                         </div>
                     </div>
                 </div>

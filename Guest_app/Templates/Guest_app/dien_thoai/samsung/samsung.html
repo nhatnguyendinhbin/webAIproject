@@ -1,41 +1,41 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <!-- detail products -->
-    {% for item in samsung %}
-    <div class="product__slider-item">
-            <div class="product__image display_flex">
-            <a href="#"><img src="#" alt=""/></a>
-            </div>
+    <div class="container px-1 px-lg-5 mt-0">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">    
+            {% for ss in samsung  %}
+            <div class="col mb-1">
+                <div class="card h-100">
+                    <!-- Product image-->
+                    <img src="/media/{{ss.Product_Img}}" alt="not_filecover" height="250">
+                    
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                    <!-- Product name-->
+                        <div class="text-center">                                 
+                            <h3 class="fw-bolder" style="color: black;">{{ss.Product_Name}}</h3>
+                        </div>
 
-        <!-- name product -->
-            <div class="product__bottom">
-            <h4 class="product__bottom-name">
-                <a href="#">{{item.Product_Name}}</a>
-            </h4>
+                    <!-- price product -->
+                        <div class="product__bottom-price">
+                            <span class="product-special" style="color: red;">Giá: {{ss.Unit_Price}}.vnđ</span>
+                        </div>
+                    <!-- price config -->
+                        <div class="product__bottom-price">
+                            <span class="product-special">
+                                <i class="fas fa-microchip"></i>
+                                    {{ss.Configuration}}
+                            </span>
+                        </div>
+                    </div> 
+                    <!-- add to cart -->
+                    <div class="card-footer pt-0 border-top-0 bg-transparent">
+                        <div class="text-center">
+                            <a class="btn btn-outline-dark mt-auto" href="{% url 'detail_product' ss.Product_ID %}">Chi tiết sản phẩm</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-        <!-- price config -->
-            <div class="product__bottom-price">
-                <span><span class="product-special">Cấu hình: {{item.Configuration}}</span></span>
-            </div>
-
-        <!-- price product -->
-        <div class="product__bottom-price">
-            <span><span class="product-special">Giá :{{item.Quantyti_In_Store}}</span></span>
+            {% endfor %}   
         </div>
-        
-        <!-- add cart product -->
-            {% comment %} <div class="product__bottom-action">
-                <button class="btn_cart add_to_cart">
-                <i class="fal fa-shopping-bag">add cart</i>
-            </div> {% endcomment %}
-            <form class="d-flex">
-                <button class="btn btn-outline-dark" type="submit">
-                    <i class="bi-cart-fill me-1"></i>
-                    Thêm vào giỏ hàng
-                </button>
-            </form>
-    </div>
-    {% endfor %}
 {% endblock content %}

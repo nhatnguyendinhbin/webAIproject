@@ -1,28 +1,66 @@
 {% extends "base.html" %}
 
 {% block content %}
-đây là trang detail phone
-    <br>
-    <ul>
-        <li>
-            <img src="#" alt="" width="250px"/>
-        </li>
-        <li>
-            <h3><span style="color: red;">tên điện thoại :</span> title</h3>
-        </li>
-        <li>
-            <h3><span style="color: red;">giá :</span> giá</h3>
-        </li>
-    </ul>   
+        {% comment %} <!------ Include the above in your HEAD tag ---------->
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> {% endcomment %}
+<!-- detail product -->
+<div class="container">
+    <div class="row">
+        <!-- thêm trực tiếp thuộc tính vào -->
+{% for product in product %}
+         <!-- thêm hình ảnh -->
+       <div class="col-xs-4 item-photo">
+            <img src="/media/{{product.Product_Img}}" alt="not_filecover" height="450">
+        </div>
+        
+        <div class="col-xs-5" style="border:0px solid gray">
+            <!-- thông tin sản phẩm -->
+            <h3>{{product.Product_Name}}</h3>    
 
-    {% comment %} {% for item in review_books  %}
-    <ul>          
-        <hr>
-        <h5>THE REVIEWS  : </h5>
-        <p><span style="color: blue;">Content :</span> {{item.content}}</p>
-        <p><span style="color: blue;">Rating  :</span> {{item.rating}} </p>
-        <p><span style="color: blue;">Date created :</span> {{item.date_created}} </p>
-        <p><span style="color: blue;">Book :</span> {{item.book}}   </p>
-    </ul>
-    {% endfor %} {% endcomment %}
+            <!-- giá -->
+            <h3 class="title-price" style="color:#337ab7">Giá: {{product.Unit_Price}}.VNĐ</h3>
+            
+            <!-- Detalles especificos del producto -->
+            <div class="section">
+                <h6 class="title-attr" style="margin-top:15px;" >Hệ điều hành: {{product.Configuration}}</h6>                    
+                <div>
+                    <div class="attr" style="width:25px;background:#5a5a5a;"></div>
+                    <div class="attr" style="width:25px;background:white;"></div>
+                </div>
+            </div>
+            <div class="section" style="padding-bottom:5px;">
+                <h6 class="title-attr">Số lượng trong cửa hàng: {{product.Quantity_In_Store}}</h6>                    
+            </div>
+
+            <!-- Form để nhập số lượng -->
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" id="product_id" name="product_id" value="{{ product.id }}">
+                <label for="quantity">Số lượng:</label>
+                <input type="number" id="quantity" name="quantity" min="1" value="1" class="form-control form-control-lg">
+                <button type="submit" >Thêm vào giỏ hàng</button>
+            </form>
+            <br>
+        </div>                       
+        <!-- Một số thông tin khác -->
+        <div class="col-xs-9">
+            <ul class="menu-items">
+                <li class="active" style="color: black;"> Xuất xứ: {{product.Other}}</li>
+                <li style="color: black;">Bảo hành : {{product.Warranty}}</li>
+                <li style="color: black;">Mô tả : {{product.Description}}</li>
+            </ul>
+{% endfor %}
+            <div style="width:100%;border-top:1px solid silver">
+                <p style="padding:15px;">
+                    <small>
+                        © 2018. Công ty cổ phần Thế giới công nghệ. GPDKKD: 0303217354 do sở KH & ĐT TP.HCM cấp ngày 02/01/2007. GPMXH: 238/GP-BTTTT do Bộ Thông Tin và Truyền Thông cấp ngày 04/06/2020.
+                        Địa chỉ: 128 Trần Quang Khải, P.Tân Định, Q.1, TP.Hồ Chí Minh. Địa chỉ liên hệ và gửi chứng từ: Lô T2-1.2, Đường D1, Đ. D1, P.Tân Phú, TP.Thủ Đức, TP.Hồ Chí Minh. Điện thoại: 028 38125960. Email: cskh@thegioicongnghe.com. Chịu trách nhiệm nội dung: Huỳnh Văn Tốt. Email: Tot.huynhvan@thegioicongnghe.com. Xem chính sách sử dụng
+                    </small>
+                </p>
+            </div>
+        </div>		
+    </div>
+</div>
 {% endblock content %}

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Web bán hàng</title>
+    <title>Thế giới công nghệ</title>
 
     <!-- Custom fonts for this template-->
     <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
@@ -36,6 +36,11 @@
         <!-- Page level custom scripts -->
         <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
         <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
+        <!-- banner -->
+        <link href="{% static 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet' %}">
+        <script src="{% static 'https://code.jquery.com/jquery-3.2.1.slim.min.js' %}"></script>
+        <script src="{% static 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' %}"></script>
+        <script src="{% static 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' %}"></script>
 
 </head>
 
@@ -51,12 +56,17 @@
             <div id="content">
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
+                    <!-- homepage -->
+                    <div>
+                        <a href="{% url 'home' %}">
+                            <span style="color: black; font-weight: bold; ">
+                                TRANG CHỦ
+                            </span>
+                        </a>
+                    </div>
 
                     <!-- Search -->
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <div class="row">
                         <form action="#" class="row g-3 col-md-12" action="" method="post">
                             <!-- phải có dòng csrf_token trong forms thì django mới nhận được -->
@@ -70,16 +80,27 @@
                         </form>
                     </div>
                 
-                    <!-- add cart -->
+                    <!-- List cart -->
                     <div class="mini__cart">
-                        <a class="cart_pcs" href="#">
+                        <a class="cart_pcs" href="{% url 'shopping_cart' %}">
                             <i class="fas fa-shopping-cart"></i></i>&nbsp;
-                            <span class="t__line">Giỏ hàng &nbsp;
-                            <span>0</span></span>
+                            <span class="t__line">Giỏ hàng</span> 
                         </a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
                     </div>
-                
-                    <!--  Navbar -->
+                    
+                    <!-- contact -->
+                    <div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </i><span>Liên hệ <i class="fas fa-phone fa-fw"></i> : 036238XYZ</span>
+                    </div>
+                    <div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>Thông báo <i class="fas fa-bell fa-fw"></i> </span>
+                    </div>
+                    <div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>Hỗ trợ <i class="fas fa-question-circle"></i> </span>
+                    </div>
+
+                    <!--  Login and logout -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
@@ -109,8 +130,8 @@
                         <li class="nav-item dropdown no-arrow">
                             <div class="header-main-login">
                                 <i class="fas fa-user-friends"></i>
-                                <a href='/singup' title='Đăng ký'>Đăng nhập</a>&nbsp; |
-                                &nbsp;<a href='/singin' title='Đăng nhập'>Đăng xuất </a>
+                                <a href="{% url 'login' %}" title=''>Đăng nhập</a>&nbsp; |&nbsp;
+                                <a href="{% url 'logout' %}" title=''>Đăng xuất </a>
                             </div>
                         </li>
                     </ul>
